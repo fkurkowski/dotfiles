@@ -21,6 +21,10 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-sensible'
 Plugin 'Valloric/YouCompleteMe'
 
+" JS and React
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
 " Colorschemes
 Plugin 'tomasr/molokai'
 
