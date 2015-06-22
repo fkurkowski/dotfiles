@@ -64,6 +64,7 @@ export LC_ALL="en_US.UTF-8"
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -80,18 +81,8 @@ export LC_ALL="en_US.UTF-8"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export ANDROID_HOME=`brew --prefix android`
-
-SCALA_HOME=/Users/fkurkowski/Library/Developer/scala-2.10.2
-export SCALA_HOME
-PATH="$SCALA_HOME/bin:${PATH}"
-
-export JAVA_HOME=`/usr/libexec/java_home`
+# export JAVA_HOME=`/usr/libexec/java_home`
 
 # Go
-export GOPATH=/Users/fkurkowski/Library/Developer/go
-PATH="$GOPATH/bin:${PATH}"
-
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# export GOPATH=/Users/fkurkowski/Library/Developer/go
+# PATH="$GOPATH/bin:${PATH}"
