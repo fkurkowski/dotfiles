@@ -45,7 +45,7 @@ ZSH_THEME="gallifrey"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(osx git mvn sbt)
+plugins=(osx git mvn sbt docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,8 +81,9 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# export JAVA_HOME=`/usr/libexec/java_home`
+export JAVA_HOME=`/usr/libexec/java_home`
 
-# Go
-# export GOPATH=/Users/fkurkowski/Library/Developer/go
-# PATH="$GOPATH/bin:${PATH}"
+export ANDROID_HOME=`brew --prefix android`
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
