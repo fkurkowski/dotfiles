@@ -1,2 +1,6 @@
 vim/bundle/*
 .swp
+
+# WeeChat stuff
+*.log
+*.weechatlog
