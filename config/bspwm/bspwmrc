@@ -18,6 +18,11 @@ bspc monitor DP-1 -d v vi vii viii
 # bspc config remove_disabled_monitors true
 # bspc config remove_unplugged_monitors true
 
+PANEL_FIFO=/tmp/panel-fifo
+PANEL_HEIGHT=24
+PANEL_FONT_FAMILY="-*-terminus-medium-r-normal-*-12-*-*-*-c-*-*-1"
+export PANEL_FIFO PANEL_HEIGHT PANEL_FONTE_FAMILY
+
 bspc rule -a gimp floating=on
 
 panel &
