@@ -11,7 +11,6 @@ Plugin 'gmarik/Vundle.vim'
 " Plugins
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
-Plugin 'fatih/vim-go'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
@@ -19,10 +18,14 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-sensible'
+Plugin 'valloric/YouCompleteMe'
 
 " JS and React
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+
+" Jade
+Plugin 'digitaltoad/vim-jade'
 
 " Colorschemes
 Plugin 'tomasr/molokai'
@@ -60,6 +63,7 @@ set nu " Number lines
 set hls " highlight search
 set lbr " linebreak
 set ruler " ruler
+set relativenumber
 
 " Use spaces during format
 set expandtab
