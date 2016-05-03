@@ -25,8 +25,9 @@ Plugin 'valloric/YouCompleteMe'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 
-" Jade
+" Templating
 Plugin 'digitaltoad/vim-jade'
+Plugin 'mustache/vim-mustache-handlebars'
 
 " Colorschemes
 Plugin 'tomasr/molokai'
