@@ -22,5 +22,8 @@ cat "$PANEL_FIFO" | panel_bar \
              -f "$PANEL_FONT_FAMILY" \
              -f "$PANEL_ICON_FAMILY" \
              -F "$COLOR_FOREGROUND" \
-             -B "$COLOR_BACKGROUND" &
+             -B "$COLOR_BACKGROUND" \
+             -u "$PANEL_UNDERLINE_HEIGHT" &
+# We could start pipiping to sh and use lemonbar's %{A} to make things clickable
+
 wait

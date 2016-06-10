@@ -3,14 +3,15 @@
 # Variables
 PANEL_FIFO=/tmp/panel-fifo
 PANEL_HEIGHT=36
+PANEL_UNDERLINE_HEIGHT=2
 
 # You need lemonbar-xft-git for these to work
 PANEL_FONT_FAMILY="CamingoCode:size=9"
 PANEL_ICON_FAMILY="FontAwesome:size=11"
-export PANEL_FIFO PANEL_HEIGHT PANEL_FONT_FAMILY PANEL_ICON_FAMILY
+export PANEL_FIFO PANEL_HEIGHT PANEL_UNDERLINE_HEIGHT PANEL_FONT_FAMILY PANEL_ICON_FAMILY
 
-bspc config window_gap 15
-bspc config top_padding $(expr $PANEL_HEIGHT + 3)
+bspc config window_gap 18
+bspc config top_padding $(expr $PANEL_HEIGHT + $PANEL_UNDERLINE_HEIGHT + 4)
 
 bspc monitor DVI-I-1 -d $(echo -e '\uf0ac') $(echo -e '\uf121') $(echo -e '\uf120')  $(echo -e '\uf075')
 bspc monitor DP-1 -d $(echo -e '\uf0ac') $(echo -e '\uf121') $(echo -e '\uf120')  $(echo -e '\uf075')
