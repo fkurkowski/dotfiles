@@ -101,6 +101,12 @@ let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn))|(node_modules|dist)$'
 let g:airline_theme='tomorrow'
 
 """"""""""""""""""""""""""""""""""
+" vim-gitgutter
+" temporary until https://github.com/airblade/vim-gitgutter/issues/332 is fixed
+""""""""""""""""""""""""""""""""""
+let g:gitgutter_async=0
+
+""""""""""""""""""""""""""""""""""
 " vim-jsx
 """"""""""""""""""""""""""""""""""
 let g:jsx_ext_required = 0
