@@ -1,0 +1,6 @@
+#!/bin/sh
+dmenu_run -q -i \
+  -nb '#cbd6e2' -nf '#0b1c2c' -sb '#627e99' -sf '#f7f9fb' \
+  -o 0.8 -h 50 -w 500 -x 680 -y 490 \
+  -fn CamingoCode:size=10
+
