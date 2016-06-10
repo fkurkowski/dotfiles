@@ -30,7 +30,7 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'mustache/vim-mustache-handlebars'
 
 " Colorschemes
-Plugin 'tomasr/molokai'
+Plugin 'chriskempson/base16-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -52,7 +52,8 @@ syntax on " Turn on syntax highligthing
 set showmatch  "Show matching bracets when text indicator is over them
 
 " Color Scheme
-colorscheme molokai
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-harmonic16
 
 " indentation
 " other configs loaded by sensible.vim
@@ -98,7 +99,7 @@ let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn))|(node_modules|dist)$'
 """"""""""""""""""""""""""""""""""
 " airline
 """"""""""""""""""""""""""""""""""
-let g:airline_theme='tomorrow'
+let g:airline_theme='base16_harmonic16'
 
 """"""""""""""""""""""""""""""""""
 " vim-gitgutter
