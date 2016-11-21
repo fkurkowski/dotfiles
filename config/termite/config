@@ -16,36 +16,36 @@ scrollback_lines        = 5000
 search_wrap             = true
 
 [colors]
-# Base16 harmonic16
-# Scheme: Jannik Siebert (https://github.com/janniks)
+# Base16 Solarized
+# Scheme: Ethan Schoonover (http://ethanschoonover.com/solarized)
 
-foreground      = #cbd6e2
-foreground_bold = #cbd6e2
-cursor          = #56bf8b
-background      = #0b1c2c
+foreground      = #93a1a1
+foreground_bold = #93a1a1
+cursor          = #93a1a1
+background      = #002b36
 
 # 16 color space
-color0  = #0b1c2c
-color1  = #bf8b56
-color2  = #56bf8b
-color3  = #8bbf56
-color4  = #8b56bf
-color5  = #bf568b
-color6  = #568bbf
-color7  = #cbd6e2
-color8  = #627e99
-color9  = #bf8b56
-color10 = #56bf8b
-color11 = #8bbf56
-color12 = #8b56bf
-color13 = #bf568b
-color14 = #568bbf
-color15 = #f7f9fb
+color0  = #002b36
+color1  = #dc322f
+color2  = #859900
+color3  = #b58900
+color4  = #268bd2
+color5  = #6c71c4
+color6  = #2aa198
+color7  = #93a1a1
+color8  = #657b83
+color9  = #dc322f
+color10 = #859900
+color11 = #b58900
+color12 = #268bd2
+color13 = #6c71c4
+color14 = #2aa198
+color15 = #fdf6e3
 
 # 256 color space
-color16 = #bfbf56
-color17 = #bf5656
-color18 = #223b54
-color19 = #405c79
-color20 = #aabcce
-color21 = #e5ebf1
+color16 = #cb4b16
+color17 = #d33682
+color18 = #073642
+color19 = #586e75
+color20 = #839496
+color21 = #eee8d5

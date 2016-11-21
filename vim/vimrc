@@ -53,7 +53,7 @@ set showmatch  "Show matching bracets when text indicator is over them
 
 " Color Scheme
 let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-harmonic16
+colorscheme base16-solarized-dark
 
 " indentation
 " other configs loaded by sensible.vim
@@ -99,7 +99,7 @@ let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn))|(node_modules|dist)$'
 """"""""""""""""""""""""""""""""""
 " airline
 """"""""""""""""""""""""""""""""""
-let g:airline_theme='base16_harmonic16'
+let g:airline_theme='base16_solarized'
 
 """"""""""""""""""""""""""""""""""
 " vim-gitgutter

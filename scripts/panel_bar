@@ -61,7 +61,7 @@ while read -r line ; do
               [FOU]*)
                 FG=$COLOR_FOCUSED_FG
                 BG=$COLOR_FOCUSED_BG
-                U=$COLOR_FOREGROUND
+                U=$COLOR_FOCUSED_UNDERLINE
                 ;;
             esac
             wm="${wm}%{F$FG}%{B$BG}%{U$U}%{+u}${PADDING}${name}${PADDING}%{-u}%{B-}%{F-}"
