@@ -86,12 +86,6 @@ set completeopt-=preview
 map <F3> :NERDTreeToggle<CR><CR>
 
 """"""""""""""""""""""""""""""""""
-" vim-go
-""""""""""""""""""""""""""""""""""
-au FileType go nmap ,gd <Plug>(go-doc)
-au FileType go nmap ,gv <Plug>(go-doc-vertical)
-
-""""""""""""""""""""""""""""""""""
 " ctrl-p
 """"""""""""""""""""""""""""""""""
 let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn))|(node_modules|dist)$'
