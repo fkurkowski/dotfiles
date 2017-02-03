@@ -11,7 +11,7 @@ dynamic_title           = true
 urgent_on_bell          = false
 browser                 = firefox
 clickable_url           = true
-font                    = camingocode 10
+font                    = iosevka term 10
 scrollback_lines        = 5000
 search_wrap             = true
 

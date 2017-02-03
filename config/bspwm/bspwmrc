@@ -2,16 +2,16 @@
 
 # Variables
 PANEL_FIFO=/tmp/panel-fifo
-PANEL_HEIGHT=36
+PANEL_HEIGHT=32
 PANEL_UNDERLINE_HEIGHT=2
 
 # You need lemonbar-xft-git for these to work
-PANEL_FONT_FAMILY="CamingoCode:size=9"
-PANEL_ICON_FAMILY="FontAwesome:size=11"
+PANEL_FONT_FAMILY="IosevkaTerm:size=8"
+PANEL_ICON_FAMILY="FontAwesome:size=9"
 export PANEL_FIFO PANEL_HEIGHT PANEL_UNDERLINE_HEIGHT PANEL_FONT_FAMILY PANEL_ICON_FAMILY
 
-bspc config window_gap 18
-bspc config top_padding $(expr $PANEL_HEIGHT + $PANEL_UNDERLINE_HEIGHT + 4)
+bspc config window_gap 17
+bspc config top_padding $(expr $PANEL_HEIGHT + $PANEL_UNDERLINE_HEIGHT)
 
 # Colors
 bspc config focused_border_color "#e5ebf1"
