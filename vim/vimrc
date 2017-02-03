@@ -21,9 +21,15 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-sensible'
 Plugin 'valloric/YouCompleteMe'
 
+" Haskell
+Plugin 'neovimhaskell/haskell-vim'
+
 " JS and React
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+
+" Python
+Plugin 'hynek/vim-python-pep8-indent'
 
 " Templating
 Plugin 'digitaltoad/vim-jade'
