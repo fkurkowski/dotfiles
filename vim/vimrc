@@ -20,6 +20,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-sensible'
 Plugin 'valloric/YouCompleteMe'
+Plugin 'vim-syntastic/syntastic'
 
 " Haskell
 Plugin 'neovimhaskell/haskell-vim'
@@ -95,6 +96,15 @@ map <F3> :NERDTreeToggle<CR><CR>
 " ctrl-p
 """"""""""""""""""""""""""""""""""
 let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn))|(node_modules|dist)$'
+"
+""""""""""""""""""""""""""""""""""
+" syntastic
+""""""""""""""""""""""""""""""""""
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers=['flow']
 
 """"""""""""""""""""""""""""""""""
 " airline
