@@ -4,7 +4,8 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-export EDITOR='vim'
+export EDITOR=vim
 export VISUAL=$EDITOR
+export BROWSER=firefox
 
 export PATH=$HOME/bin:/usr/.local/bin:$HOME/.local/bin:$PATH
