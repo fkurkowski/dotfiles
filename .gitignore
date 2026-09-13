@@ -10,6 +10,9 @@
 !/ghostty
 !/nvim
 !/tmux
+!/herdr
+/herdr/*
+!/herdr/config.toml
 !/btop
 !/lazygit
 !/mise
