@@ -45,6 +45,11 @@ hl.config({
 --       drag_3fg = 1,
     },
   },
+
+  misc = {
+    -- Disable pasting the primary selection on middle click.
+    middle_click_paste = false,
+  },
 })
 
 -- Per-device overrides (e.g. Bluetooth mice) go here so they don't affect
@@ -52,7 +57,7 @@ hl.config({
 -- Find device names with `hyprctl devices`.
 hl.device({
   name = "fk's-mouse-(home)",
-  sensitivity = -0.7,
+  sensitivity = -0.9,
   scroll_factor = 1.8,
 })
 
