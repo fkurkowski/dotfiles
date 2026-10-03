@@ -31,6 +31,9 @@
 hl.unbind("SUPER + SHIFT + E")
 o.bind("SUPER + SHIFT + E", "Gmail", { webapp = "https://gmail.com" })
 
+hl.unbind("SUPER + SHIFT + ALT + E")
+o.bind("SUPER + SHIFT + ALT + E", "New email", { webapp = "https://mail.google.com/mail/?view=cm&fs=1" })
+
 hl.unbind("SUPER + SHIFT + C")
 o.bind("SUPER + SHIFT + C", "Google Calendar", { webapp = "https://calendar.google.com", focus = true })
 
@@ -44,6 +47,10 @@ o.bind("SUPER + SHIFT + ALT + RETURN", "Browser (private)", { omarchy = "browser
 
 hl.unbind("SUPER + SHIFT + G")
 o.bind("SUPER + SHIFT + G", "GitHub", { webapp = "https://github.com" })
+
+o.bind("SUPER + SHIFT + V", "Vercel", { webapp = "https://vercel.com" })
+
+o.bind("SUPER + CTRL + ALT + A", "Agent usage panel", "omarchy-shell shell toggle omarchy.agents")
 hl.unbind("SUPER + SHIFT + P")
 hl.unbind("SUPER + SHIFT + W")
 hl.unbind("SUPER + SHIFT + B")
