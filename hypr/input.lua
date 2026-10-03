@@ -47,6 +47,15 @@ hl.config({
   },
 })
 
+-- Per-device overrides (e.g. Bluetooth mice) go here so they don't affect
+-- the global `sensitivity` above, which the trackpad also relies on.
+-- Find device names with `hyprctl devices`.
+hl.device({
+  name = "fk's-mouse-(home)",
+  sensitivity = -0.7,
+  scroll_factor = 1.8,
+})
+
 -- App-specific touchpad scroll speeds.
 -- o.window("(Alacritty|kitty|foot)", { scroll_touchpad = 1.5 })
 -- o.window("com.mitchellh.ghostty", { scroll_touchpad = 0.2 })
