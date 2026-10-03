@@ -18,3 +18,5 @@
 !/mise
 !/starship.toml
 !/git
+
+*.log
