@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+# Shim for notify-send that makes Herdr's desktop notifications clickable.
+#
+# Herdr sends its toasts via a fire-and-forget `notify-send` call; that
+# process exits before a click can ever reach it, so herdrdev/herdr#2684
+# ("open_notification_target does nothing with system/terminal delivery")
+# was closed upstream as an inherent limit of that delivery path, not a bug.
+#
+# The real notification daemon on this machine — Omarchy's Quickshell shell —
+# doesn't have that limit: it supports a click action that survives the
+# sender's exit, via an `omarchy-exec-argv` hint set by
+# omarchy-notification-send --exec (see Service.qml's invokePopupDefault).
+#
+# This shim sits ahead of the real notify-send on PATH. Only calls whose
+# --app-name is "Herdr" get rerouted through that mechanism, into
+# herdr-notify-focus.sh; every other caller passes straight through with its
+# original argv, untouched.
+#
+# Not yet linked onto PATH — see herdr/bin/README.md for the test step.
+
+set -euo pipefail
+
+REAL_NOTIFY_SEND="/usr/bin/notify-send"
+FOCUS_SCRIPT="$HOME/.config/herdr/bin/herdr-notify-focus.sh"
+
+# Cheap, non-destructive pre-scan for --app-name: the pass-through path below
+# re-execs "$@" completely unchanged, so this scan only needs to be right
+# about whether to take the Herdr branch, not to fully parse notify-send's
+# grammar.
+app_name=""
+i=1
+while ((i <= $#)); do
+  arg="${!i}"
+  case "$arg" in
+  -a | --app-name)
+    j=$((i + 1))
+    app_name="${!j:-}"
+    ;;
+  --app-name=*)
+    app_name="${arg#--app-name=}"
+    ;;
+  esac
+  ((i++))
+done
+
+if [[ "$app_name" != "Herdr" ]]; then
+  exec "$REAL_NOTIFY_SEND" "$@"
+fi
+
+# Herdr path: parse properly so summary/body/icon survive the reroute.
+parsed=$(getopt -o u:t:a:i:n:c:eh:pr:wA:v? \
+  --long urgency:,expire-time:,app-name:,icon:,app-icon:,category:,transient,hint:,print-id,id-fd:,replace-id:,wait,action:,selected-action-fd:,activation-token-fd:,version,help \
+  -n notify-send -- "$@") || exec "$REAL_NOTIFY_SEND" "$@"
+eval set -- "$parsed"
+
+icon=""
+while true; do
+  case "$1" in
+  -i | --icon)
+    icon=$2
+    shift 2
+    ;;
+  -a | --app-name | -u | --urgency | -n | --app-icon | -c | --category | -h | --hint | -r | --replace-id | -A | --action | --id-fd | --selected-action-fd | --activation-token-fd)
+    shift 2
+    ;;
+  -e | --transient | -p | --print-id | -w | --wait | -v | --version | --help | -\?)
+    shift
+    ;;
+  --)
+    shift
+    break
+    ;;
+  *)
+    break
+    ;;
+  esac
+done
+
+summary="${1:-}"
+body="${2:-}"
+
+args=(--app-name Herdr)
+[[ -n "$icon" ]] && args+=(--icon "$icon")
+args+=("$summary")
+[[ -n "$body" ]] && args+=("$body")
+args+=(--exec "$FOCUS_SCRIPT")
+
+exec omarchy-notification-send "${args[@]}"
