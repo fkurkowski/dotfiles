@@ -15,8 +15,6 @@
 # --app-name is "Herdr" get rerouted through that mechanism, into
 # herdr-notify-focus.sh; every other caller passes straight through with its
 # original argv, untouched.
-#
-# Not yet linked onto PATH — see herdr/bin/README.md for the test step.
 
 set -euo pipefail
 

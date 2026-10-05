@@ -16,8 +16,6 @@
 # Hyprland window hosting the herdr client — the thing a key press inside
 # Herdr can't do for you.
 
-set -euo pipefail
-
 export PATH="$HOME/.local/bin:/usr/bin:/bin:$PATH"
 
 target_pane=$(herdr agent list 2>/dev/null | jq -r '
@@ -27,25 +25,49 @@ target_pane=$(herdr agent list 2>/dev/null | jq -r '
   | .[0].pane_id // empty')
 
 if [[ -n "$target_pane" ]]; then
-  herdr agent focus "$target_pane" >/dev/null 2>&1 || true
+  herdr agent focus "$target_pane" >/dev/null 2>&1
 fi
 
 # Find the Hyprland window whose process tree contains the herdr client (not
 # the detached `herdr server`), and raise it. Best-effort: picks the first
 # match, which is enough for a single herdr instance.
+#
+# One `ps` snapshot up front, walked in pure bash from here: a per-node
+# pgrep+ps spawns two subprocesses per descendant, and a browser window's
+# couple hundred renderer/utility children turned that into a ~1s walk. A
+# single table lookup doesn't care how big any window's tree is.
+declare -A comm_of children_of
+while read -r p pp c; do
+  comm_of["$p"]="$c"
+  children_of["$pp"]+="$p "
+done < <(ps -eo pid=,ppid=,comm= 2>/dev/null)
+
 is_herdr_descendant() {
-  local pid="$1" children child
-  children=$(pgrep -P "$pid" 2>/dev/null) || return 1
-  for child in $children; do
-    [[ "$(ps -o comm= -p "$child" 2>/dev/null)" == "herdr" ]] && return 0
-    is_herdr_descendant "$child" && return 0
+  local pid="$1" queue=("$1") child
+  while ((${#queue[@]})); do
+    pid="${queue[-1]}"
+    unset 'queue[-1]'
+    for child in ${children_of[$pid]:-}; do
+      [[ "${comm_of[$child]:-}" == "herdr" ]] && return 0
+      queue+=("$child")
+    done
   done
   return 1
 }
 
-hyprctl clients -j 2>/dev/null | jq -r '.[] | "\(.address)\t\(.pid)"' | while IFS=$'\t' read -r address pid; do
+found_address=""
+while IFS=$'\t' read -r address pid; do
   if is_herdr_descendant "$pid"; then
-    hyprctl dispatch focuswindow "address:$address" >/dev/null 2>&1
+    found_address="$address"
     break
   fi
-done
+done < <(hyprctl clients -j 2>/dev/null | jq -r '.[] | "\(.address)\t\(.pid)"')
+
+if [[ -n "$found_address" ]]; then
+  # Hyprland 0.55+ dropped the old `focuswindow address:0x...` dispatch
+  # string for a Lua dispatcher table: `dispatch` now expects an expression
+  # built from hl.dsp.*, not space-separated argv (see wiki.hypr.land
+  # Configuring/Basics/Dispatchers — "focus({ window })" takes the same
+  # window selectors, address: included, as a Lua string).
+  hyprctl dispatch "hl.dsp.focus({ window = \"address:$found_address\" })" >/dev/null 2>&1
+fi

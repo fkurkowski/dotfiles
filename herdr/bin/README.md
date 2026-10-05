@@ -4,7 +4,7 @@ Problem: Herdr's desktop notifications aren't clickable (herdrdev/herdr#2684,
 closed upstream as intended). `notify-send` is the actual mechanism — see
 `notify-send` and `herdr-notify-focus.sh` in this directory for the full story.
 
-Not linked onto PATH yet. To test it:
+Linked and verified working:
 
 ```sh
 sudo ln -s ~/.config/herdr/bin/notify-send /usr/local/bin/notify-send
@@ -18,8 +18,7 @@ comes before `/usr/bin` for every process on this machine, including herdr's
 already-running server, so this symlink takes effect immediately — no shell
 restart, no PATH edit, no need to restart herdr.
 
-Trigger a Herdr notification (e.g. let an agent pane go idle) and click the
-toast — it should jump to the most recently finished agent and raise the
-window.
+Clicking a Herdr toast now jumps to the most recently finished agent and
+raises the window, in well under a tenth of a second.
 
 To remove: `sudo rm /usr/local/bin/notify-send`.
